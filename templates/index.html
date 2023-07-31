@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Partitoteca</title>
+</head>
+<body>
+
+    <h1> {{titulo}} </h1>
+        {% for pais in paises %}
+         <tr>
+            <h1> {{ pais.nome }} </h1>
+         </tr>
+        {% endfor %}
+</body>
+</html>
