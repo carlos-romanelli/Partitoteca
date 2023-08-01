@@ -413,7 +413,7 @@ comando = [
 (1,'Dance Pop'),
 (1,'Electropop'),
 (1,'Synthpop'),
-(1,'Rock n Roll'),
+(1,'Rock and Roll'),
 (1,'Rock Clássico'),
 (1,'Rock Alternativo'),
 (1,'Rock Progressivo'),
