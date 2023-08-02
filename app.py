@@ -26,9 +26,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = \
 db = SQLAlchemy(app)
 
 
-
-
-
 @app.route('/')
 def ola():
 
