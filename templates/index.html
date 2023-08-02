@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Partitoteca</title>
-</head>
+{% extends "template.html" %}
+{% block conteudo %}
 <body>
 
     <h1> {{titulo}} </h1>
-        {% for pais in paises %}
+        {% for acervo in acervos %}
          <tr>
-            <h1> {{ pais.nome }} </h1>
+            <h2> {{ acervo.descricao_acervo }} -  {{ acervo.telefone_acervo }} - {{ acervo.email_acervo }} - {{ acervo.sigla }} -
+                {{ acervo.localizacao }} - {{ acervo.publico }} </h2>
          </tr>
         {% endfor %}
-</body>
-</html>
+
+{% endblock %}
