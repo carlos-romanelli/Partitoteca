@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -19,8 +19,8 @@ class Acervo:
         self.publico = publico
 
 
-
 app = Flask(__name__)
+app.secret_key = 'mozart'
 
 # Instanciando o banco de dados. Conecta a aplicação ao banco de dados
 # string de conexão. Permite a migração para outros bancos de dados
@@ -50,6 +50,11 @@ def index():
 
 @app.route('/novo_usuario')
 def novo_usuario():
+
+# Testando se o usuário está logado
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect(url_for('login', proxima=url_for('novo_usuario')))
+
     return render_template('novo_usuario.html', titulo1='Dados do Acervo', titulo2='Dados do Usuário')
 
 
@@ -64,11 +69,36 @@ def cria_acervo():
 
     acervo = Acervo(descricao_acervo, telefone_acervo, email_acervo, sigla, localizacao, publico)
     acervos = lista.append(acervo)
-    return redirect('/')
+    return redirect(url_for('index'))
 
 
 @app.route('/cria_usuario', methods=['POST',])
 def cria_usuario():
     pass
+
+@app.route('/login')
+def login():
+    proxima = request.args.get('proxima')
+    return render_template('login.html', proxima=proxima)
+
+# Faz o login do usuário
+@app.route('/autenticar', methods=['POST',])
+def autenticar():
+
+    if '123456' == request.form['senha']:
+        session['usuario_logado'] = request.form['usuario']
+        flash(session['usuario_logado'] + ' logado com sucesso!')
+        proxima_pagina = request.form['proxima']
+        return redirect(proxima_pagina)
+    else:
+        flash('Usuário não logado!')
+        return redirect(url_for('login'))
+
+# Faz o logout do usuário
+@app.route('/logout')
+def logout():
+    session['usuario_logado'] = None
+    flash('Logout efetuado com sucesso!')
+    return redirect(url_for('index'))
 
 app.run(debug=True)
