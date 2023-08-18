@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+    <table class="table table-striped table-responsive table-bordered">
+        <thead class="thead-default">
+                <tr>
+                    <th>Apelido</th>
+                    <th>Nome</th>
+                    <th>Senha</th>
+                    <th>e-Mail</th>
+                    <th>Telefone</th>
+                    <th>Público</th>
+                    <th>Redes Sociais</th>
+                    <th></th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{usuario.apelido}}</td>
+                    <td>{{usuario.nome}}</td>
+                    <td>{{usuario.senha}}</td>
+                    <td>{{usuario.email_usuario}}</td>
+                    <td>{{usuario.telefone_usuario}}</td>
+                    <td>{{usuario.contato_publico}}</td>
+                    <td>{{usuario.redes_sociais}}</td>
+                </tr>
+
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

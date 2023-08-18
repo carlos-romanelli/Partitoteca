@@ -4,26 +4,28 @@
     <table class="table table-striped table-responsive table-bordered">
         <thead class="thead-default">
                 <tr>
+                    <th>Identificador</th>
                     <th>Acervo</th>
                     <th>Telefone</th>
                     <th>e-Mail</th>
                     <th>Sigla</th>
                     <th>Endereço</th>
                     <th>Público</th>
+                    <th>Data Inclusão</th>
                     <th></th>
                 </tr>
         </thead>
         <tbody>
             {% for acervo in acervos %}
                 <tr>
-                    <td>{{acervo.descricao_acervo}}</td>
-                    <td>{{acervo.telefone_acervo}}</td>
-                    <td>{{acervo.email_acervo}}</td>
+                    <td>{{acervo.idAcervo}}</td>
+                    <td>{{acervo.descricao}}</td>
+                    <td>{{acervo.telefone}}</td>
+                    <td>{{acervo.email}}</td>
                     <td>{{acervo.sigla}}</td>
                     <td>{{acervo.localizacao}}</td>
                     <td>{{acervo.publico}}</td>
-
-
+                    <td>{{acervo.dtInclusao}}</td>
                 </tr>
 
             {%endfor%}
