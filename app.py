@@ -451,16 +451,33 @@ def cria_acervo():
 def cria_usuario():
     apelido = request.form['apelido']
     nome = request.form['nome']
-    email_usuario = request.form['email_usuario']
     senha = request.form['senha']
-    telefone_usuario = request.form['telefone_usuario']
-    contato_publico = request.form['contato_publico']
-    redes_sociais = request.form['redes_sociais']
+    email = request.form['email_usuario']
+    telefone = request.form['telefone_usuario']
+    contatoPublico = request.form['contato_publico']
+    alterarSenha = request.form['alterar_senha']
+    redesSociais = request.form['redes_sociais']
+    dtInclusao = request.form['data_inclusao']
 
-    usuario = Usuario(apelido, nome, email_usuario, senha, telefone_usuario, contato_publico, redes_sociais)
-    # usuarios = dict_usuario.append(usuario)
+    usuario_criar = Usuario.query.filter_by(apelido=apelido).first()
+    if usuario_criar:
+        flash('Usuário já existe')
+        return redirect(url_for('index'))
 
-    return redirect(url_for('usuarios'))
+    novo_usuario = Usuario(apelido=apelido, \
+                           nome=nome, \
+                           senha = senha, \
+                           email = email, \
+                           telefone = telefone, \
+                           contatoPublico = contatoPublico, \
+                           alterarSenha = alterarSenha, \
+                           redesSociais = redesSociais, \
+                           dtInclusao = dtInclusao)
+
+    db.session.add(novo_usuario)
+    db.session.commit()
+
+    return redirect(url_for('usuario'))
 
 
 @app.route('/login')
@@ -473,11 +490,9 @@ def login():
 @app.route('/autenticar', methods=['POST', ])
 def autenticar():
 
-    # Pesquisa dentro do dicionário usuarios
-    if request.form['usuario'] in lista_usuario:
-        usuario = lista_usuario[request.form['usuario']]
+    usuario = Usuario.query.filter_by(apelido= request.form['usuario']).first()
+    if usuario:
         if request.form['senha'] == usuario.senha:
-
             # Se a senha bater, colocar o usuário dentro da session
             session['usuario_logado'] = usuario.apelido
             flash(session['usuario_logado'] + ' logado com sucesso!')
