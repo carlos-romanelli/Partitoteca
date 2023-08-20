@@ -4,19 +4,17 @@
     <table class="table table-striped table-responsive table-bordered">
         <thead class="thead-default">
                 <tr>
-                    <th>idPais</th>
-                    <th>nome</th>
-                    <th>sigla3</th>
-                    <th>sigla2</th>
+                    <th>idConjunto</th>
+                    <th>idAcervo</th>
+                    <th>Descrição</th>
                 </tr>
         </thead>
         <tbody>
-            {% for pais in paises %}
+            {% for conjunto in conjuntos %}
                 <tr>
-                    <td>{{pais.idPais}}</td>
-                    <td>{{pais.nome}}</td>
-                    <td>{{pais.sigla3}}</td>
-                    <td>{{pais.sigla2}}</td>
+                    <td>{{conjunto.idConjunto}}</td>
+                    <td>{{conjunto.idAcervo}}</td>
+                    <td>{{conjunto.descricao}}</td>
                 </tr>
 
             {%endfor%}

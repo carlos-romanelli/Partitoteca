@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <h1> {{ titulo }} </h1>
+    <table class="table table-striped table-responsive table-bordered">
+        <thead class="thead-default">
+                <tr>
+                    <th>idPessoa</th>
+                    <th>idAcervo</th>
+                    <th>idPais</th>
+                    <th>Nome</th>
+                    <th>Data Nascimento</th>
+                    <th>Nome Comum</th>
+                    <th>Data Inclusão</th>
+                    <th></th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for pessoa in pessoas %}
+                <tr>
+                    <td>{{pessoa.idPessoa}}</td>
+                    <td>{{pessoa.idAcervo}}</td>
+                    <td>{{pessoa.idPais}}</td>
+                    <td>{{pessoa.nome}}</td>
+                    <td>{{pessoa.dtNascimento}}</td>
+                    <td>{{pessoa.nomeComum}}</td>
+                    <td>{{pessoa.dtInclusao}}</td>
+                </tr>
+
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

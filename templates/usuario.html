@@ -4,26 +4,31 @@
     <table class="table table-striped table-responsive table-bordered">
         <thead class="thead-default">
                 <tr>
+                    <th>idUsuario</th>
                     <th>Apelido</th>
                     <th>Nome</th>
                     <th>Senha</th>
                     <th>e-Mail</th>
                     <th>Telefone</th>
                     <th>Público</th>
+                    <th>Alterar Senha</th>
                     <th>Redes Sociais</th>
+                    <th>Data de Inclusão</th>
                     <th></th>
                 </tr>
         </thead>
         <tbody>
             {% for usuario in usuarios %}
                 <tr>
+                    <td>{{usuario.idUsuario}}</td>
                     <td>{{usuario.apelido}}</td>
                     <td>{{usuario.nome}}</td>
                     <td>{{usuario.senha}}</td>
-                    <td>{{usuario.email_usuario}}</td>
-                    <td>{{usuario.telefone_usuario}}</td>
-                    <td>{{usuario.contato_publico}}</td>
-                    <td>{{usuario.redes_sociais}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.telefone}}</td>
+                    <td>{{usuario.contatoPublico}}</td>
+                    <td>{{usuario.redesSociais}}</td>
+                    <td>{{usuario.dtInclusao}}</td>
                 </tr>
 
             {%endfor%}

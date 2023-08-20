@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <h1> {{titulo}} </h1>
+    <table class="table table-striped table-responsive table-bordered">
+        <thead class="thead-default">
+                <tr>
+                    <th>idContainer</th>
+                    <th>idPartitura</th>
+                    <th>idAcervo</th>
+
+                </tr>
+        </thead>
+        <tbody>
+            {% for container_partitura in containers_partituras %}
+                <tr>
+                    <td>{{container_partitura.idContainer}}</td>
+                    <td>{{container_partitura.idPartitura}}</td>
+                    <td>{{container_partitura.idAcervo}}</td>
+                </tr>
+
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <h1> {{ titulo }} </h1>
+    <table class="table table-striped table-responsive table-bordered">
+        <thead class="thead-default">
+                <tr>
+                    <th>idVersao</th>
+                    <th>IdObra</th>
+                    <th>idAcervo</th>
+                    <th>idGenero</th>
+                    <th>idForma</th>
+                    <th>idAndamento</th>
+                    <th>idTonalidade</th>
+                    <th>idTipoVariacao</th>
+                    <th>Descrição</th>
+                    <th>É publica?</th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for versao in versões %}
+                <tr>
+                    <td>{{versao.idVersao}}</td>
+                    <td>{{versao.idObra}}</td>
+                    <td>{{versao.idAcervo}}</td>
+                    <td>{{versao.idGenero}}</td>
+                    <td>{{versao.idForma}}</td>
+                    <td>{{versao.idAndamento}}</td>
+                    <td>{{versao.idTonalidade}}</td>
+                    <td>{{versao.idTipoVariacao}}</td>
+                    <td>{{versao.descricao}}</td>
+                    <td>{{versao.publica}}</td>
+                </tr>
+
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

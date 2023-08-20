@@ -1,0 +1,28 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+    <table class="table table-striped table-responsive table-bordered">
+        <thead class="thead-default">
+                <tr>
+                    <th>idUsuario</th>
+                    <th>idAcervo</th>
+                    <th>Tipo de Usuário</th>
+                    <th>Data Inclusão</th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for usuario_acervo in usuarios_acervos %}
+                <tr>
+                    <td>{{usuario_acervo.idUsuario}}</td>
+                    <td>{{usuario_acervo.idAcervo}}</td>
+                    <td>{{usuario_acervo.tpUsuario}}</td>
+                    <td>{{usuario_acervo.dtInclusao}}</td>
+                </tr>
+
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

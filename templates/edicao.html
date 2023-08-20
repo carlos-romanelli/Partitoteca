@@ -1,0 +1,33 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <h1> {{ titulo }} </h1>
+    <table class="table table-striped table-responsive table-bordered">
+        <thead class="thead-default">
+                <tr>
+                    <th>idPartitura</th>
+                    <th>idEditora</th>
+                    <th>idAcervo</th>
+                    <th>Descricao</th>
+                    <th>Ano de Edição</th>
+                    <th>Número da Edição</th>
+                <th></th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for edicao in edicoes %}
+                <tr>
+                    <td>{{edicao.idPartitura}}</td>
+                    <td>{{edicao.idEditora}}</td>
+                    <td>{{edicao.idAcervo}}</td>
+                    <td>{{edicao.descricao}}</td>
+                    <td>{{edicao.anoEdicao}}</td>
+                    <td>{{edicao.numEdicao}}</td>
+                </tr>
+
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <h1> {{ titulo }} </h1>
+    <table class="table table-striped table-responsive table-bordered">
+        <thead class="thead-default">
+                <tr>
+                    <th>IdPartitura</th>
+                    <th>idVersao</th>
+                    <th>idAcervo</th>
+                    <th>Nível de Dificuldade</th>
+                    <th>Código de Localização</th>
+                    <th>Link de Localização</th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for partitura in partituras %}
+                <tr>
+                    <td>{{partitura.idPartitura}}</td>
+                    <td>{{partitura.idVersao}}</td>
+                    <td>{{partitura.idAcervo}}</td>
+                    <td>{{partitura.nivelDificuldade}}</td>
+                    <td>{{partitura.codigoLocalizacao}}</td>
+                    <td>{{partitura.linkLocalizacao}}</td>
+                </tr>
+
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

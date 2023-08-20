@@ -4,19 +4,17 @@
     <table class="table table-striped table-responsive table-bordered">
         <thead class="thead-default">
                 <tr>
-                    <th>idPais</th>
-                    <th>nome</th>
-                    <th>sigla3</th>
-                    <th>sigla2</th>
+                    <th>idTipoVariacao</th>
+                    <th>idAcervo</th>
+                    <th>Descrição</th>
                 </tr>
         </thead>
         <tbody>
-            {% for pais in paises %}
+            {% for tipo_variacao in tipos_variacoes %}
                 <tr>
-                    <td>{{pais.idPais}}</td>
-                    <td>{{pais.nome}}</td>
-                    <td>{{pais.sigla3}}</td>
-                    <td>{{pais.sigla2}}</td>
+                    <td>{{tipo_variacao.idTipoVariacao}}</td>
+                    <td>{{tipo_variacao.idAcervo}}</td>
+                    <td>{{tipo_variacao.descricao}}</td>
                 </tr>
 
             {%endfor%}

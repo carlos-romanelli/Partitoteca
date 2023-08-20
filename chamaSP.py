@@ -20,14 +20,16 @@ def access_stored_procedure():
         cursor = connection.cursor()
 
         # Define o nome da stored procedure
-        stored_procedure_name = "spTeste4"
+        # stored_procedure_name = "spTeste4"
+        stored_procedure_name = "spTeste"
 
         # Parâmetros de entrada para a stored procedure, se houver
         # Exemplo: params = (parametro1, parametro2, ...)
         # Caso não tenha parâmetros, deixe params como uma tupla vazia (params = ())
         # A vírgula depois do parâmetro é importante!!!
-        params = (2,)  # Coloque os parâmetros aqui, se necessário
 
+        # params = (2,)  # Coloque os parâmetros aqui, se necessário
+        params = ()  # Coloque os parâmetros aqui, se necessário
         # Executa a stored procedure
         cursor.callproc(stored_procedure_name, params)
 

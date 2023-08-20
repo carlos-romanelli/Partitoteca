@@ -4,19 +4,17 @@
     <table class="table table-striped table-responsive table-bordered">
         <thead class="thead-default">
                 <tr>
-                    <th>idPais</th>
-                    <th>nome</th>
-                    <th>sigla3</th>
-                    <th>sigla2</th>
+                    <th>idObra</th>
+                    <th>idPessoa</th>
+                    <th>idAcervo</th>
                 </tr>
         </thead>
         <tbody>
-            {% for pais in paises %}
+            {% for compositor in compositores %}
                 <tr>
-                    <td>{{pais.idPais}}</td>
-                    <td>{{pais.nome}}</td>
-                    <td>{{pais.sigla3}}</td>
-                    <td>{{pais.sigla2}}</td>
+                    <td>{{compositor.idObra}}</td>
+                    <td>{{compositor.idPessoa}}</td>
+                    <td>{{compositor.idAcervo}}</td>
                 </tr>
 
             {%endfor%}
