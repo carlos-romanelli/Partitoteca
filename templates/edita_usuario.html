@@ -4,39 +4,40 @@
       <div class="page-header">
           <h1>{{ titulo }}</h1>
       </div>
-      <form action="/cria_usuario" method='post' >
+      <form action="/atualiza_usuario" method='post' >
         <fieldset>
+          <input type="hidden" name="idUsuario" value="{{ usuario.idUsuario }}">
           <div class="form-group">
             <label for="apelido">Login</label>
-            <input type="text" id="apelido" name="apelido" class="form-control">
+            <input type="text" id="apelido" name="apelido" class="form-control" value="{{ usuario.apelido }}">
           </div>
           <div class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" class="form-control">
+            <input type="text" id="nome" name="nome" class="form-control" value="{{ usuario.nome }}">
           </div>
           <div class="form-group">
             <label for="senha">Senha</label>
-            <input type="text" id="senha" name="senha" class="form-control">
+            <input type="text" id="senha" name="senha" class="form-control" value="{{ usuario.senha }}">
           </div>
           <div class="form-group">
             <label for="email_usuario">e-Mail</label>
-            <input type="text" id="email_usuario" name="email_usuario" class="form-control">
+            <input type="text" id="email_usuario" name="email_usuario" class="form-control" value="{{ usuario.email }}">
           </div>
           <div class="form-group">
             <label for="telefone_usuario">Telefone</label>
-            <input type="text" id="telefone_usuario" name="telefone_usuario" class="form-control">
+            <input type="text" id="telefone_usuario" name="telefone_usuario" class="form-control" value="{{ usuario.telefone }}">
           </div>
           <div class="form-group">
             <label for="contato_publico">Tornar dados de contatos públicos?</label>
-            <input type="text" id="contato_publico" name="contato_publico" class="form-control">
+            <input type="text" id="contato_publico" name="contato_publico" class="form-control" value="{{ usuario.contatoPublico }}">
           </div>
           <div class="form-group">
             <label for="alterar_senha">Alterar senha?</label>
-            <input type="text" id="alterar_senha" name="alterar_senha" class="form-control">
+            <input type="text" id="alterar_senha" name="alterar_senha" class="form-control" value="{{ usuario.alterarSenha }}">
           </div>
           <div class="form-group">
             <label for="redes_sociais">Redes Sociais</label>
-            <input type="text" id="redes_sociais" name="redes_sociais" class="form-control">
+            <input type="text" id="redes_sociais" name="redes_sociais" class="form-control" value="{{ usuario.redesSociais }}">
           </div>
           <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
         </fieldset>
