@@ -37,6 +37,7 @@ db = SQLAlchemy(app)
 
 # Criando as classes de tabelas - Models - de conexão com o banco de dados
 
+
 class Acervo(db.Model):
     idAcervo = db.Column(db.Integer, primary_key=True, autoincrement=True)
     descricao = db.Column(db.String(100), nullable=False)
@@ -50,6 +51,7 @@ class Acervo(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.nome
 
+
 class Andamento(db.Model):
     idAndamento = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idAcervo = db.Column(db.Integer, nullable=False)
@@ -57,6 +59,7 @@ class Andamento(db.Model):
 
     def __repr__(self):
         return '<Name %r>' % self.nome
+
 
 class Compositor(db.Model):
     idObra = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -84,6 +87,7 @@ class Conjunto_pessoa(db.Model):
 
     def __repr__(self):
         return '<Name %r>' % self.nome
+
 
 class Container(db.Model):
     idContainer = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -114,6 +118,7 @@ class Edicao(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.nome
 
+
 class Editora(db.Model):
     idEditora = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idAcervo = db.Column(db.Integer, nullable=False)
@@ -122,6 +127,7 @@ class Editora(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.nome
 
+
 class Forma(db.Model):
     idForma = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idAcervo = db.Column(db.Integer, nullable=False)
@@ -129,6 +135,7 @@ class Forma(db.Model):
 
     def __repr__(self):
         return '<Name %r>' % self.nome
+
 
 class Genero(db.Model):
     idGenero = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -147,6 +154,7 @@ class Instrumento(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.nome
 
+
 class Instrumento_pessoa(db.Model):
     idInstrumento = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idPessoa = db.Column(db.Integer, nullable=False)
@@ -157,6 +165,7 @@ class Instrumento_pessoa(db.Model):
         return '<Name %r>' % self.nome
 
 # class Letrista
+
 
 class Obra(db.Model):
     idObra = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -181,6 +190,7 @@ class Pais(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.nome
 
+
 class Partitura(db.Model):
     idPartitura = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idVersao = db.Column(db.Integer, nullable=False)
@@ -192,6 +202,7 @@ class Partitura(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.nome
 
+
 class Periodo(db.Model):
     idPeriodo = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idAcervo = db.Column(db.Integer, nullable=False)
@@ -199,6 +210,7 @@ class Periodo(db.Model):
 
     def __repr__(self):
         return '<Name %r>' % self.nome
+
 
 class Pessoa(db.Model):
     idPessoa = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -223,6 +235,7 @@ class Tipo_codigo_internacional(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.nome
 
+
 class Tipo_variacao(db.Model):
     idTipoVariacao = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idAcervo = db.Column(db.Integer, nullable=False)
@@ -230,6 +243,7 @@ class Tipo_variacao(db.Model):
 
     def __repr__(self):
         return '<Name %r>' % self.nome
+
 
 class Tonalidade(db.Model):
     idTonalidade = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -255,6 +269,7 @@ class Usuario(db.Model):
     def __repr__(self):
         return '<Name %r>' % self.name
 
+
 class Usuario_acervo(db.Model):
     idUsuario = db.Column(db.Integer, primary_key=True, autoincrement=True)
     idAcervo = db.Column(db.Integer, nullable=False)
@@ -263,6 +278,7 @@ class Usuario_acervo(db.Model):
 
     def __repr__(self):
         return '<Name %r>' % self.nome
+
 
 class Versao(db.Model):
     idVersao = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -290,92 +306,114 @@ def index():
     lista_acervo = Acervo.query.order_by(Acervo.idAcervo)
     return render_template('index.html', titulo='Bem-vindo ao Partitoteca', acervos=lista_acervo)
 
+
 @app.route('/acervo')
 def acervo():
     lista_acervo = Acervo.query.order_by(Acervo.idAcervo)
     return render_template('acervo.html', titulo='Lista de Acervos', acervos=lista_acervo)
+
 
 @app.route('/andamento')
 def andamento():
     lista_andamento = Andamento.query.order_by(Andamento.descricao)
     return render_template('andamento.html', titulo='Lista de Andamentos', andamentos=lista_andamento)
 
+
 @app.route('/compositor')
 def compositor():
     lista_compositor = Compositor.query.order_by(Compositor.idObra)
     return render_template('compositor.html', titulo='Lista de Compositores', compositores=lista_compositor)
+
 
 @app.route('/conjunto')
 def conjunto():
     lista_conjunto = Conjunto.query.order_by(Conjunto.descricao)
     return render_template('conjunto.html', titulo='Lista de Conjuntos', conjuntos=lista_conjunto)
 
+
 @app.route('/conjunto_pessoa')
 def conjunto_pessoa():
     lista_conjunto_pessoa = Conjunto_pessoa.query.order_by(Conjunto_pessoa.idConjunto)
-    return render_template('conjunto_pessoa.html', titulo='Lista de Conjuntos Pessoa', conjuntos_pessoas=lista_conjunto_pessoa)
+    return render_template('conjunto_pessoa.html', titulo='Lista de Conjuntos Pessoa',
+                           conjuntos_pessoas=lista_conjunto_pessoa)
+
 
 @app.route('/container')
 def container():
     lista_container = Container.query.order_by(Container.descricao)
-    return render_template('container.html', titulo='Lista de Containers', containers=lista_container)
+    return render_template('container.html', titulo='Lista de Containers',
+                           containers=lista_container)
+
 
 @app.route('/container_partitura')
 def container_partitura():
     lista_container_partitura = Container_partitura.query.order_by(Container_partitura.idContainer)
-    return render_template('container_partitura.html', titulo='Lista de Partituras por Containers ', containers_partituras=lista_container_partitura)
+    return render_template('container_partitura.html', titulo='Lista de Partituras por Containers ',
+                           containers_partituras=lista_container_partitura)
+
 
 @app.route('/edicao')
 def edicao():
     lista_edicao = Edicao.query.order_by(Edicao.descricao)
     return render_template('edicao.html', titulo='Lista de Edições ', edicoes=lista_edicao)
 
+
 @app.route('/editora')
 def editora():
     lista_editora = Editora.query.order_by(Editora.nome)
     return render_template('editora.html', titulo='Lista de Editoras ', editoras=lista_editora)
+
 
 @app.route('/forma')
 def forma():
     lista_forma = Forma.query.order_by(Forma.descricao)
     return render_template('forma.html', titulo='Lista de Formas', formas=lista_forma)
 
+
 @app.route('/genero')
 def genero():
     lista_genero = Genero.query.order_by(Genero.descricao)
     return render_template('genero.html', titulo='Lista de Gêneros', generos=lista_genero)
+
 
 @app.route('/instrumento')
 def instrumento():
     lista_instrumento = Instrumento.query.order_by(Instrumento.descricao)
     return render_template('instrumento.html', titulo='Lista de Instrumentos', instrumentos=lista_instrumento)
 
+
 @app.route('/instrumento_pessoa')
 def instrumento_pessoa():
     lista_instrumento_pessoa = Instrumento_pessoa.query.order_by(Instrumento_pessoa.descricao)
-    return render_template('instrumento_pessoa.html', titulo='Lista de Instrumentos da Pessoa', instrumentos_pessoas=lista_instrumento_pessoa)
+    return render_template('instrumento_pessoa.html', titulo='Lista de Instrumentos da Pessoa',
+                           instrumentos_pessoas=lista_instrumento_pessoa)
 
 # @app.route('/letrista')
+
 
 @app.route('/obra')
 def obra():
     lista_obra = Obra.query.order_by(Obra.titulo)
     return render_template('obra.html', titulo='Lista de Obras', obras=lista_obra)
 
+
 @app.route('/pais')
 def pais():
     lista_pais = Pais.query.order_by(Pais.nome)
     return render_template('pais.html', titulo='Lista de países', paises=lista_pais)
+
 
 @app.route('/partitura')
 def partitura():
     lista_partitura = Partitura.query.order_by(Partitura.idPartitura)
     return render_template('partitura.html', titulo='Lista de Partituras', partituras=lista_partitura)
 
+
 @app.route('/periodo')
 def periodo():
     lista_periodo = Periodo.query.order_by(Periodo.descricao)
     return render_template('periodo.html', titulo='Lista de Períodos', periodos=lista_periodo)
+
 
 @app.route('/pessoa')
 def pessoa():
@@ -384,31 +422,40 @@ def pessoa():
 
 # @app.route('/restauracao')
 
+
 @app.route('/tipo_codigo_internacional')
 def tipo_codigo_internacional():
     lista_tipo_codigo_internacional = Tipo_codigo_internacional.query.order_by(Tipo_codigo_internacional.descricao)
-    return render_template('tipo_codigo_internacional.html', titulo='Lista de Tipos de Códigos Internacionais', tipos_codigos_internacionais=lista_tipo_codigo_internacional)
+    return render_template('tipo_codigo_internacional.html', titulo='Lista de Tipos de Códigos Internacionais',
+                           tipos_codigos_internacionais=lista_tipo_codigo_internacional)
 
 
 @app.route('/tipo_variacao')
 def tipo_variacao():
     lista_tipo_variacao = Tipo_variacao.query.order_by(Tipo_variacao.descricao)
-    return render_template('tipo_variacao.html', titulo='Lista de Tipos de Variações', tipos_variacoes=lista_tipo_variacao)
+    return render_template('tipo_variacao.html', titulo='Lista de Tipos de Variações',
+                           tipos_variacoes=lista_tipo_variacao)
+
 
 @app.route('/tonalidade')
 def tonalidade():
     lista_tonalidade = Tonalidade.query.order_by(Tonalidade.descricao)
-    return render_template('tonalidade.html', titulo='Lista de Tonalidades', tonalidades=lista_tonalidade)
+    return render_template('tonalidade.html', titulo='Lista de Tonalidades',
+                           tonalidades=lista_tonalidade)
+
 
 @app.route('/usuario')
 def usuario():
     lista_usuario = Usuario.query.order_by(Usuario.nome)
     return render_template('usuario.html', titulo='Lista de Usuários', usuarios=lista_usuario)
 
+
 @app.route('/usuario_acervo')
 def usuario_acervo():
     lista_usuario_acervo = Usuario_acervo.query.order_by(Usuario_acervo.idAcervo)
-    return render_template('usuario_acervo.html', titulo='Lista de Usuários por Acervo', usuarios_acervos=lista_usuario_acervo)
+    return render_template('usuario_acervo.html', titulo='Lista de Usuários por Acervo',
+                           usuarios_acervos=lista_usuario_acervo)
+
 
 @app.route('/versao')
 def versao():
@@ -421,6 +468,7 @@ def versao():
 # ROTAS DE CRIAÇÃO
 ##################
 
+
 @app.route('/novo_usuario')
 def novo_usuario():
 
@@ -429,8 +477,6 @@ def novo_usuario():
         return redirect(url_for('login', proxima=url_for('novo_usuario')))
 
     return render_template('novo_usuario.html', titulo1='Dados do Acervo', titulo2='Dados do Usuário')
-
-
 
 
 @app.route('/cria_acervo', methods=['POST', ])
@@ -464,15 +510,15 @@ def cria_usuario():
         flash('Usuário já existe')
         return redirect(url_for('index'))
 
-    novo_usuario = Usuario(apelido=apelido, \
-                           nome=nome, \
-                           senha = senha, \
-                           email = email, \
-                           telefone = telefone, \
-                           contatoPublico = contatoPublico, \
-                           alterarSenha = alterarSenha, \
-                           redesSociais = redesSociais, \
-                           dtInclusao = dtInclusao)
+    novo_usuario = Usuario(apelido=apelido,
+                           nome=nome,
+                           senha=senha,
+                           email=email,
+                           telefone=telefone,
+                           contatoPublico=contatoPublico,
+                           alterarSenha=alterarSenha,
+                           redesSociais=redesSociais,
+                           dtInclusao=dtInclusao)
 
     db.session.add(novo_usuario)
     db.session.commit()
@@ -490,7 +536,7 @@ def login():
 @app.route('/autenticar', methods=['POST', ])
 def autenticar():
 
-    usuario = Usuario.query.filter_by(apelido= request.form['usuario']).first()
+    usuario = Usuario.query.filter_by(apelido=request.form['usuario']).first()
     if usuario:
         if request.form['senha'] == usuario.senha:
             # Se a senha bater, colocar o usuário dentro da session
